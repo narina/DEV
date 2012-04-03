@@ -1,0 +1,37 @@
+Ext.define('SVM.view.inquiry.TemplateBuilder.AbstractStep', {
+	extend : 'Ext.container.Container',
+	
+	bodyCls : 'paddingAll10',
+	
+	layout : {
+		type : 'vbox',
+		align : 'stretch'
+	},
+	
+	defaults : {
+		cls : 'paddingAll5'
+	},
+	
+	initComponent : function() {
+		this.callParent();
+		
+		var self = this;
+		
+		this.add({
+			xtype : 'fieldset',
+			title : this.title,
+			collapsible: true,
+			items : [{
+				xtype : 'displayfield',
+				hideLabel : true,
+				value : this.description
+			}]
+		});
+	},
+	
+	getTemplateModel : function() {
+		if(!this.templateModel)
+			this.templateModel = this.up().getTemplateModel();
+		return this.templateModel;
+	}
+});

@@ -1,0 +1,14 @@
+Ext.define('SVM.view.inquiry.TemplateBuilder.Step2', {
+	extend : 'SVM.view.inquiry.TemplateBuilder.AbstractStep',
+
+	alias : 'widget.tbuilder_step2',
+
+	title : 'Step2',
+	description : '이 단계는 어쩌구 저쩌구 하는 단계입니다.',
+	
+	
+	initComponent : function() {
+		this.callParent();
+	}
+
+});

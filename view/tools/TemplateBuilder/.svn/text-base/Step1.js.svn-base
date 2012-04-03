@@ -1,0 +1,12 @@
+Ext.define('SVM.view.inquiry.TemplateBuilder.Step1', {
+	extend : 'SVM.view.inquiry.TemplateBuilder.AbstractStep',
+
+	alias : 'widget.tbuilder_step1',
+
+	title : '화면 레이아웃 선택',
+	description : '이 단계에서는 만들고자 하는 폼 화면의 기본 레이아웃을 선택합니다.',
+	
+	initComponent : function() {
+		this.callParent();
+	}
+});
