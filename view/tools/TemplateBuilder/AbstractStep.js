@@ -37,5 +37,9 @@ Ext.define('DEV.view.tools.TemplateBuilder.AbstractStep', {
 		if(!this.templateModel)
 			this.templateModel = this.up().getTemplateModel();
 		return this.templateModel;
+	},
+
+	getTemplate : function() {
+		return this.up().getTemplate();
 	}
 });

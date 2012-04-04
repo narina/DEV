@@ -1,7 +1,7 @@
 Ext.define('DEV.view.tools.TemplateBuilder', {
 	extend : 'Ext.panel.Panel',
 
-	requires : [ 'DEV.view.tools.TemplateBuilder.AbstractStep', 'DEV.view.tools.TemplateBuilder.Preview',
+	requires : [ 'DEV.view.tools.TemplateBuilder.AbstractStep', 'DEV.view.tools.TemplateBuilder.Preview', 'DEV.view.tools.TemplateBuilder.Step0',
 			'DEV.view.tools.TemplateBuilder.Step1', 'DEV.view.tools.TemplateBuilder.Step2', 'DEV.view.tools.TemplateBuilder.Step3' ],
 
 	title : 'TemplateBuilder',
@@ -14,6 +14,16 @@ Ext.define('DEV.view.tools.TemplateBuilder', {
 		this.callParent();
 
 		var self = this;
+		
+		this.templateModel = {
+			module : 'MES',
+			category : '',
+			className : '',
+			baseForm : 'MES.view.form.BaseForm',
+			formClassName : function() {
+				return this.module + '.view.' + this.category + '.' + this.className;
+			}
+		};
 
 		function navigate(direction) {
 			var layout = self.getLayout();
@@ -29,7 +39,6 @@ Ext.define('DEV.view.tools.TemplateBuilder', {
 		this.sub('next').on('click', function() {
 			navigate('next');
 		});
-
 	},
 
 	bbar : [ '->', {
@@ -42,6 +51,9 @@ Ext.define('DEV.view.tools.TemplateBuilder', {
 	} ],
 
 	items : [ {
+		xtype : 'tb_step0',
+		itemId : 'step0'
+	}, {
 		xtype : 'tb_step1',
 		itemId : 'step1'
 	}, {
@@ -50,5 +62,20 @@ Ext.define('DEV.view.tools.TemplateBuilder', {
 	}, {
 		xtype : 'tb_step3',
 		itemId : 'step3'
-	} ]
+	} ],
+	
+	getTemplateModel : function() {
+		return this.templateModel;
+	},
+	
+	getTemplate : function() {
+		return DEV.template.MainTemplate.tplMainForm;
+//		this.template = this.buildTemplate();
+//		
+//		return this.template;
+//	},
+//	
+//	buildTemplate : function() {
+//		return DEV.template.MainTemplate.tplMainForm.apply(this.templateModel);
+	}
 });
